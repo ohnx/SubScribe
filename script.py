@@ -34,6 +34,9 @@ if __name__ == "__main__":
 
 	parser.add_argument('video', help = 'path to video file')
 	parser.add_argument('sub', help = 'path to sub file')
+	parser.add_argument('tcolor', help = 'text color')
+	parser.add_argument('bcolor', help = 'background color')
+	parser.add_argument('opacity', help = 'subtitle opacity')
 
 	args = parser.parse_args()
 
@@ -44,4 +47,4 @@ if __name__ == "__main__":
 		seconds_start = (subs[i].start.seconds) + (subs[i].start.minutes * 60) + (subs[i].start.hours * 60 * 60)
 		seconds_end   = (subs[i].end.seconds) + (subs[i].end.minutes * 60) + (subs[i].end.hours * 60 * 60)
 		ms = mid(seconds_start*1000,seconds_end*1000)
-		save_new_frame(videofile, ms, str(subs[i].text))
+		save_new_frame(videofile, ms, str(subs[i].text), args.tcolor, args.bcolor, args.opacity)
